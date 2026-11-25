@@ -1,6 +1,6 @@
 library(tidyverse)
 
-energy <- read.csv("data/energydata_complete.csv")
+energy <- read.csv("Data/energydata_complete.csv")
 energy$date <- strptime(as.character(energy$date), format = "%Y-%m-%d %H:%M:%S", tz = "UTC")
 energy$date <- as.POSIXct(energy$date, tz = "UTC")
 

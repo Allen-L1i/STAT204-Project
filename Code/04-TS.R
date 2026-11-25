@@ -1,7 +1,7 @@
 library(tidyverse)
-dir.create("plots", showWarnings = FALSE)
+dir.create("Plots", showWarnings = FALSE)
 
-ts_energy <- read.csv("data/energydata_complete.csv")
+ts_energy <- read.csv("Data/energydata_complete.csv")
 
 ts_energy$date <- as.POSIXct(ts_energy$date, format = "%Y-%m-%d %H:%M:%S", tz = "UTC")
 ts_energy <- ts_energy |> arrange(date)
@@ -67,7 +67,7 @@ test_comparison <- imap_dfr(predictions, function(predicted, model) {
 print(test_comparison)
 
 # Each lag is one 10-minute interval in the chronological training set.
-png("plots/04-residual-acf.png", width = 10, height = 5, units = "in", res = 300)
+png("Plots/04-residual-acf.png", width = 10, height = 5, units = "in", res = 300)
 par(mfrow = c(1, 2))
 acf(resid(baseline_fit), lag.max = 36, main = "OLS", xlab = "Lag (10-minute intervals)",
     ylim = c(-0.2, 1))
